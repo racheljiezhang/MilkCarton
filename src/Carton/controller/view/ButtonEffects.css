@@ -9,3 +9,6 @@
 .button:hover {
     -fx-background-color: linear-gradient(#f5ceae, #ffbf7a);
 }
+.button:focused {
+	-fx-border-color: #946431;
+}

@@ -10,14 +10,14 @@
 			fx:controller="Carton.controller.view.mainMenu" prefHeight="650" prefWidth="1000"
 			style="-fx-background-color: #faf4e3">
     <children>
-		<Label layoutX="320" layoutY="120" minHeight="16" minWidth="69" text="Milk">
+		<Label layoutX="260" layoutY="170" minHeight="16" minWidth="69" text="Milk">
          	<font>
-            	<Font size="70" name="Georgia"/>
+            	<Font size="100" name="Georgia"/>
         	</font>
         </Label>
-        <Label layoutX="460" layoutY="180" minHeight="16" minWidth="69" text="Carton">
+        <Label layoutX="430" layoutY="250" minHeight="16" minWidth="69" text="Carton">
          	<font>
-            	<Font size="70" name="Georgia"/>
+            	<Font size="100" name="Georgia"/>
         	</font>
         </Label>
         <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="0" layoutY="0" preserveRatio="true">
@@ -30,7 +30,8 @@
         </Button>
         
         <Button layoutX="350.0" layoutY="550" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                 prefHeight="61.0" prefWidth="300.0" stylesheets="@ButtonEffects.css" text="Exit">
+                 prefHeight="61.0" prefWidth="300.0" stylesheets="@ButtonEffects.css" text="Exit"
+                 onAction="#handleExitButton" onKeyPressed="#handleExitOnKeyPressed" >
         </Button>
         
     </children>
