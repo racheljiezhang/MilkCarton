@@ -1,6 +1,6 @@
 package Carton.controller.view;
 
-import javafx.application.Platform; 
+import javafx.application.Platform;
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.scene.*;
@@ -14,9 +14,10 @@ import java.util.Optional;
 
 
 public class mainMenu  {
-	
-	Stage storyStage;
-	
+
+	Stage storyStage = new Stage();
+
+	@FXML
 	public void handleStartButton(ActionEvent event) throws Exception {
 		roomSelect select = new roomSelect();
 		try {

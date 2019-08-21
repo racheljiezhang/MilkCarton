@@ -1,11 +1,13 @@
 package Carton.controller.model.maps;
 
-import java.io.FileNotFoundException; 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
+import Carton.images.*;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
@@ -30,10 +32,10 @@ public class room {
 	private static int tile = 40;
 	private int length;
 	private int width;
-	private String file = "roomFiles/testerhall";
-	
+	private String file = "src/roomFiles/testerhall.txt";
+
 	private ArrayList<Node> platforms = new ArrayList<Node>();
-	
+
 	private Pane appRoot = new Pane();
 	private Pane gameRoot = new Pane();
 	private Pane uiRoot = new Pane();
@@ -45,30 +47,38 @@ public class room {
 	private double userX;
 	private double userY;
 	private Stage stage;
-	
+
 	public void mapGeneration(Stage map) throws Exception {
+
 
 		makeRoom();
 		this.stage = map;
+
 		Scene scene = new Scene(appRoot);
-		
+
+		System.out.println(map);
 		map.setScene(scene);
 		map.show();
+
 	}
-	
+
 	public void makeRoom() throws FileNotFoundException {
 
-		Image bg = new Image("images/white.png");
-		ImageView bgView = new ImageView();
+		Image bg = new Image("images/black.png");
+		ImageView bgView = new ImageView(bg);
+
 		bgView.setFitWidth(1000);
 		bgView.setFitHeight(650);
-		
-		Scanner sc;
 
+//		System.out.println(new File(".").getAbsolutePath());
+
+		Scanner sc;
 		FileReader file = new FileReader(this.file);
 		sc = new Scanner(file);
 		int y = 0;
-		
+
+
+		System.out.println("Attempted");
 		while(sc.hasNextLine()) {
 			String row = sc.nextLine().trim();
 			int x = 0;
@@ -81,7 +91,7 @@ public class room {
 					platforms.add(wall);
 					break;
 				case 'f':
-					Node floor = createImage(x, y, 40, 40, "images/white.png");
+					Node floor = createImage(x, y, 40, 40, "images/white.jpg");
 					platforms.add(floor);
 					break;
 				}
@@ -90,9 +100,9 @@ public class room {
 			System.out.println();
 			y = y + 40;
 		}
-		appRoot.getChildren().addAll(gameRoot);
+		appRoot.getChildren().addAll(bgView, gameRoot);
 	}
-	
+
 	// Creates uncrossables
 	private Node createCharacter(int h, int w, int x, int y, Color color) {
 
