@@ -1,5 +1,5 @@
 package Carton;
-import javafx.application.Application;
+import javafx.application.Application; 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,7 +13,6 @@ public class Main extends Application {
         primaryStage.setTitle("Milk Carton");
 
         // This creates the Intro
-     // This creates the Intro
      		FXMLLoader loader = new FXMLLoader();
      		loader.setLocation(Main.class.getResource("controller/view/mainMenu.fxml"));
      		Parent root = loader.load();

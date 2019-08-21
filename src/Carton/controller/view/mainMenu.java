@@ -1,6 +1,6 @@
 package Carton.controller.view;
 
-import javafx.application.Platform;
+import javafx.application.Platform; 
 import javafx.event.*;
 import javafx.fxml.*;
 import javafx.scene.*;
@@ -12,8 +12,31 @@ import javafx.stage.*;
 import java.io.IOException;
 import java.util.Optional;
 
+
 public class mainMenu  {
 	
+	Stage storyStage;
+	
+	public void handleStartButton(ActionEvent event) throws Exception {
+		roomSelect select = new roomSelect();
+		try {
+			select.selectRoom(storyStage);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	public void handleStartOnKeyPressed(KeyEvent event) throws IOException {
+		if (event.getCode() == KeyCode.ENTER) {
+			roomSelect select = new roomSelect();
+			try {
+				select.selectRoom(storyStage);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	@FXML
 	public void handleExitButton(ActionEvent event) {
@@ -22,7 +45,9 @@ public class mainMenu  {
 
 	@FXML
 	public void handleExitOnKeyPressed(KeyEvent event) {
-		System.exit(0);
+		if (event.getCode() == KeyCode.ENTER) {
+			System.exit(0);
+		}
 	}
 
 }
