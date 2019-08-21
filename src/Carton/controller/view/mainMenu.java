@@ -15,10 +15,14 @@ import java.util.Optional;
 
 public class mainMenu  {
 
-	Stage storyStage = new Stage();
+	Stage storyStage;
 
 	@FXML
 	public void handleStartButton(ActionEvent event) throws Exception {
+		storyStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		storyStage.setWidth(1000);
+		storyStage.setHeight(650);
+		storyStage.setResizable(false); 
 		roomSelect select = new roomSelect();
 		try {
 			select.selectRoom(storyStage);
@@ -30,6 +34,10 @@ public class mainMenu  {
 	@FXML
 	public void handleStartOnKeyPressed(KeyEvent event) throws IOException {
 		if (event.getCode() == KeyCode.ENTER) {
+			storyStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    		storyStage.setWidth(1000);
+    		storyStage.setHeight(650);
+    		storyStage.setResizable(false); 
 			roomSelect select = new roomSelect();
 			try {
 				select.selectRoom(storyStage);

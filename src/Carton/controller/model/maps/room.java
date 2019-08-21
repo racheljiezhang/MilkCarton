@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
-import Carton.images.*;
 
+import Carton.controller.model.characters.mc;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -47,6 +47,8 @@ public class room {
 	private double userX;
 	private double userY;
 	private Stage stage;
+	
+	mc mChar = new mc();
 
 	public void mapGeneration(Stage map) throws Exception {
 
@@ -55,7 +57,6 @@ public class room {
 		this.stage = map;
 
 		Scene scene = new Scene(appRoot);
-
 		System.out.println(map);
 		map.setScene(scene);
 		map.show();
@@ -64,21 +65,17 @@ public class room {
 
 	public void makeRoom() throws FileNotFoundException {
 
-		Image bg = new Image("images/black.png");
+		Image bg = new Image("images/white.jpg");
 		ImageView bgView = new ImageView(bg);
 
 		bgView.setFitWidth(1000);
 		bgView.setFitHeight(650);
-
-//		System.out.println(new File(".").getAbsolutePath());
 
 		Scanner sc;
 		FileReader file = new FileReader(this.file);
 		sc = new Scanner(file);
 		int y = 0;
 
-
-		System.out.println("Attempted");
 		while(sc.hasNextLine()) {
 			String row = sc.nextLine().trim();
 			int x = 0;
@@ -87,20 +84,18 @@ public class room {
 				case '.':
 					break;
 				case 'w':
-					Node wall = createCharacter(x, y, 40, 40, Color.BLACK);
-					platforms.add(wall);
-					break;
-				case 'f':
-					Node floor = createImage(x, y, 40, 40, "images/white.jpg");
-					platforms.add(floor);
+					Node wall = createImage( 40, 40, x, y,"images/black.png");
 					break;
 				}
 				x = x + 40;
 			}
-			System.out.println();
 			y = y + 40;
 		}
-		appRoot.getChildren().addAll(bgView, gameRoot);
+		Node mcNode = mChar.getMcNode();
+		mcNode.setLayoutX(160);
+		mcNode.setLayoutY(160);
+		
+		appRoot.getChildren().addAll(bgView, gameRoot, mcNode);
 	}
 
 	// Creates uncrossables

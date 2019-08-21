@@ -9,12 +9,11 @@ public class character {
 	String characterName;
 
 	// Character model
-	String modelLocation;
-	String up = null;
-	String down = null;
-	String left = null;
-	String right = null;
-	String start = null;
+	private String modelLocation;
+	private String up;
+	private String down;
+	private String left;
+	private String right;
 	
 	// Vital Organ tokens
 	private int heart;
@@ -42,6 +41,11 @@ public class character {
 
 	// Constructor
 	public character() {
+		this.setUp("images/redUp.png");
+		this.setDown("images/redUp.png");
+		this.setLeft("images/redUp.png");
+		this.setRight("images/redUp.png");
+		
 		this.setHeart(1);
 		this.setLungs(1);
 		this.setKidney(1);
@@ -81,9 +85,7 @@ public class character {
 	}
 
 	public String getModelDirection(String direction) {
-		if (direction.equals("NONE")) {
-			modelLocation = start;
-		} else if (direction.equals("RIGHT")) {
+		if (direction.equals("RIGHT")) {
 			modelLocation = right;
 		} else if (direction.equals("LEFT")) {
 			modelLocation = left;
@@ -97,6 +99,38 @@ public class character {
 
 	
 	// Setters and Getters
+	public String getUp() {
+		return up;
+	}
+
+	public void setUp(String up) {
+		this.up = up;
+	}
+
+	public String getDown() {
+		return down;
+	}
+
+	public void setDown(String down) {
+		this.down = down;
+	}
+
+	public String getLeft() {
+		return left;
+	}
+
+	public void setLeft(String left) {
+		this.left = left;
+	}
+
+	public String getRight() {
+		return right;
+	}
+
+	public void setRight(String right) {
+		this.right = right;
+	}
+
 	public int getHeart() {
 		return this.heart;
 	}
