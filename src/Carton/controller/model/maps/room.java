@@ -1,5 +1,6 @@
 package Carton.controller.model.maps;
 
+import java.awt.event.*; 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
 
-import Carton.controller.model.characters.mc;
+import Carton.controller.model.characters.*;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -40,21 +41,28 @@ public class room {
 	private Pane gameRoot = new Pane();
 	private Pane uiRoot = new Pane();
 	private Pane userRoot = new Pane();
-	private Pane enemyRoot = new Pane();
 	private Pane popupRoot = new Pane();
-	private Pane hintRoot = new Pane();
 
-	private double userX;
-	private double userY;
+	private double userX = 360;
+	private double userY = 360;
+
 	private Stage stage;
 	
 	mc mChar = new mc();
+	Node mcNode = mChar.getMcNode();
+	
+	public room() {
+		KeyListener k = new mcListener(this);
+		this.addKeyListener(k);
+	}
 
 	public void mapGeneration(Stage map) throws Exception {
 
-
 		makeRoom();
 		this.stage = map;
+		this.stage.setHeight(map.getHeight());
+		this.stage.setWidth(map.getWidth());
+		this.stage.setResizable(false);
 
 		Scene scene = new Scene(appRoot);
 		System.out.println(map);
@@ -67,9 +75,6 @@ public class room {
 
 		Image bg = new Image("images/white.jpg");
 		ImageView bgView = new ImageView(bg);
-
-		bgView.setFitWidth(1000);
-		bgView.setFitHeight(650);
 
 		Scanner sc;
 		FileReader file = new FileReader(this.file);
@@ -91,26 +96,14 @@ public class room {
 			}
 			y = y + 40;
 		}
-		Node mcNode = mChar.getMcNode();
-		mcNode.setLayoutX(160);
-		mcNode.setLayoutY(160);
+		
+		mcNode.setLayoutX(userX);
+		mcNode.setLayoutY(userY);
 		
 		appRoot.getChildren().addAll(bgView, gameRoot, mcNode);
 	}
 
 	// Creates uncrossables
-	private Node createCharacter(int h, int w, int x, int y, Color color) {
-
-		Rectangle entity = new Rectangle(w, h);
-		entity.setTranslateX(x);
-		entity.setTranslateY(y);
-		entity.setFill(color);
-		entity.getProperties().put("alive", true);
-
-		gameRoot.getChildren().add(entity);
-
-		return entity;
-	}
 
 	private Node createImage(int h, int w, double x, double y, String link) {
 
@@ -124,6 +117,16 @@ public class room {
 
 		gameRoot.getChildren().add(imageView);
 		return imageView;
+	}
+	
+	// Setters and Getters
+
+	public mc getmChar() {
+		return mChar;
+	}
+
+	public void setmChar(mc mChar) {
+		this.mChar = mChar;
 	}
 
 }

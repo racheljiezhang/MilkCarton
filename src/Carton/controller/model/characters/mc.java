@@ -5,21 +5,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class mc extends character{
-	private Node mcNode = createMc();
+	private Node mcNode;
 	
 	public mc() {
 		this.setUp("images/redUp.png");
 		this.setDown("images/redDown.png");
 		this.setLeft("images/redLeft.png");
 		this.setRight("images/redRight.png");
+		this.setImage(this.getUp());
 		this.setEar(10);
+		this.mcNode = createMc();
 	}
 	
 	// Create knight user
-	private Node createMc() {
-		System.out.println(this.getRight());
-		System.out.println(this.getEar());
-		Image nein = new Image("images/redUp.png");
+	public Node createMc() {
+		Image nein = new Image(this.getImage());
 		ImageView knightView = new ImageView(nein);
 		knightView.setFitHeight(40);
 		knightView.setFitWidth(40);

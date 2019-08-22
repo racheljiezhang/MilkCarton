@@ -9,7 +9,7 @@ public class character {
 	String characterName;
 
 	// Character model
-	private String modelLocation;
+	private String image;
 	private String up;
 	private String down;
 	private String left;
@@ -41,31 +41,33 @@ public class character {
 
 	// Constructor
 	public character() {
-		this.setUp("images/redUp.png");
-		this.setDown("images/redUp.png");
-		this.setLeft("images/redUp.png");
-		this.setRight("images/redUp.png");
+
+		this.up ="images/redUp.png";
+		this.down = "images/redUp.png";
+		this.left = "images/redUp.png";
+		this.right = "images/redUp.png";
+		this.image = this.up;
 		
-		this.setHeart(1);
-		this.setLungs(1);
-		this.setKidney(1);
-		this.setLiver(1);
-		this.setBrain(1);
+		this.heart = 1;
+		this.lungs = 1;
+		this.kidney = 1;
+		this.liver = 1;
+		this.brain = 1;
 		
-		this.setStomach(1);
-		this.setEye(2);
-		this.setTongue(1);
-		this.setEar(1);
-		this.setReprod(1);
-		this.setSpleen(1);
-		this.setGallbladder(1);
-		this.setPancreas(1);
+		this.stomach = 1;
+		this.eye = 2;
+		this.tongue = 1;
+		this.ear = 2;
+		this.reprod = 1;
+		this.spleen = 1;
+		this.gallbladder = 1;
+		this.pancreas = 1;
 		
-		this.setTonsils(1);
-		this.setAppendix(1);
-		this.setNails(1);
-		this.setToe(1);
-		this.setThyroid(1);
+		this.tonsils = 1;
+		this.appendix = 1;
+		this.nails = 1;
+		this.toe = 1;
+		this.thyroid = 1;
 	}
 
 	// Name
@@ -83,22 +85,32 @@ public class character {
 		int safetys = (this.tonsils + this.appendix + this.nails + this.toe + this.thyroid);
 		return vitals + normals + safetys;
 	}
-
-	public String getModelDirection(String direction) {
-		if (direction.equals("RIGHT")) {
-			modelLocation = right;
-		} else if (direction.equals("LEFT")) {
-			modelLocation = left;
-		} else if (direction.equals("UP")) {
-			modelLocation = up;
-		} else if (direction.equals("DOWN")) {
-			modelLocation = down;
-		}
-		return modelLocation;
+	
+	public void moveUp() {
+		this.setImage(this.getUp());
 	}
-
+	
+	public void moveDown() {
+		this.setImage(this.getDown());
+	}
+	
+	public void moveLeft() {
+		this.setImage(this.getLeft());
+	}
+	
+	public void moveRight() {
+		this.setImage(this.getRight());
+	}
 	
 	// Setters and Getters
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public String getUp() {
 		return up;
 	}
