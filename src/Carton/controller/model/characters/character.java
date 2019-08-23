@@ -1,5 +1,9 @@
  package Carton.controller.model.characters;
 
+import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class character {
 	/*
 	 * This class contains aspects of a character
@@ -39,6 +43,8 @@ public class character {
 	private int toe;
 	private int thyroid;
 
+	private Node mcNode;
+
 	// Constructor
 	public character() {
 
@@ -68,6 +74,8 @@ public class character {
 		this.nails = 1;
 		this.toe = 1;
 		this.thyroid = 1;
+		
+		this.mcNode = createMc();
 	}
 
 	// Name
@@ -78,6 +86,7 @@ public class character {
 		return characterName;
 	}
 
+	// Get points
 	public int getTotalPoints() {
 		int vitals = (this.getHeart() + this.brain + this.liver + this.getLungs() + this.kidney) * 5;
 		int normals = (this.stomach + this.eye + this.tongue + this.ear + this.reprod 
@@ -86,23 +95,48 @@ public class character {
 		return vitals + normals + safetys;
 	}
 	
+	// Create node
+	public Node createMc() {
+		Image nein = new Image(this.getImage());
+		ImageView knightView = new ImageView(nein);
+		knightView.setFitHeight(40);
+		knightView.setFitWidth(40);
+
+		knightView.getProperties().put("alive", true);
+
+		return knightView;
+	}
+	
 	public void moveUp() {
 		this.setImage(this.getUp());
+		this.getMcNode().setLayoutY(getMcNode().getLayoutY() - 10);
 	}
 	
 	public void moveDown() {
 		this.setImage(this.getDown());
+		this.getMcNode().setLayoutY(getMcNode().getLayoutY() + 10);
 	}
 	
 	public void moveLeft() {
 		this.setImage(this.getLeft());
+		this.getMcNode().setLayoutX(getMcNode().getLayoutX() - 10);
 	}
 	
 	public void moveRight() {
 		this.setImage(this.getRight());
+		this.getMcNode().setLayoutX(getMcNode().getLayoutX() + 10);
 	}
 	
 	// Setters and Getters
+
+	public Node getMcNode() {
+		return mcNode;
+	}
+
+	public void setMcNode(Node mcNode) {
+		this.mcNode = mcNode;
+	}
+	
 	public String getImage() {
 		return image;
 	}

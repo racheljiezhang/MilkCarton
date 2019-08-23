@@ -14,28 +14,7 @@ public class mc extends character{
 		this.setRight("images/redRight.png");
 		this.setImage(this.getUp());
 		this.setEar(10);
-		this.mcNode = createMc();
-	}
-	
-	// Create knight user
-	public Node createMc() {
-		Image nein = new Image(this.getImage());
-		ImageView knightView = new ImageView(nein);
-		knightView.setFitHeight(40);
-		knightView.setFitWidth(40);
 
-		knightView.getProperties().put("alive", true);
-
-		return knightView;
 	}
-
-	public Node getMcNode() {
-		return mcNode;
-	}
-
-	public void setMcNode(Node mcNode) {
-		this.mcNode = mcNode;
-	}
-	
 
 }
