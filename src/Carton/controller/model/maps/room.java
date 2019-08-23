@@ -167,13 +167,13 @@ public class room {
 	        if(mcNode.getLayoutX() <= n.getLayoutX()+40 && mcNode.getLayoutX() >= n.getLayoutX()
 	        		&& mcNode.getLayoutY()+40 <= n.getLayoutY()+3 && mcNode.getLayoutY()+40 >= n.getLayoutY()-3){
 	        	canDown = false;}
-	        else if(mcNode.getLayoutX() <= n.getLayoutX()+40 && mcNode.getLayoutX() >= n.getLayoutX()
+	        if(mcNode.getLayoutX() <= n.getLayoutX()+40 && mcNode.getLayoutX() >= n.getLayoutX()
 	        		&& mcNode.getLayoutY()-3 <= n.getLayoutY()+40 && mcNode.getLayoutY()+3 >= n.getLayoutY()+40){
 	        	canUp = false;}
-	        else if(mcNode.getLayoutY() <= n.getLayoutY()+40 && mcNode.getLayoutY() >= n.getLayoutY()
+	        if(mcNode.getLayoutY() <= n.getLayoutY()+40 && mcNode.getLayoutY() >= n.getLayoutY()
 	        		&& mcNode.getLayoutX()+40 <= n.getLayoutX()+3 && mcNode.getLayoutX()+40 >= n.getLayoutX()-3){
 	        	canRight = false;}
-	        else if(mcNode.getLayoutY() <= n.getLayoutY()+40 && mcNode.getLayoutY() >= n.getLayoutY()
+	        if(mcNode.getLayoutY() <= n.getLayoutY()+40 && mcNode.getLayoutY() >= n.getLayoutY()
 	        		&& mcNode.getLayoutX()-3 <= n.getLayoutX()+40 && mcNode.getLayoutX()+3 >= n.getLayoutX()+40){
 	        	canLeft = false;}
     	}
@@ -182,15 +182,15 @@ public class room {
     		for(Node n : allobjects) {
     			n.relocate(n.getLayoutX(), n.getLayoutY()-dy);}}
     	
-    	else if(!canUp && dy > 0) {
+    	if(!canUp && dy > 0) {
     		for(Node n : allobjects) {
     			n.relocate(n.getLayoutX(), n.getLayoutY()-dy);}}
     	
-    	else if(!canLeft && dx > 0) {
+    	if(!canLeft && dx > 0) {
     		for(Node n : allobjects) {
     			n.relocate(n.getLayoutX()-dx, n.getLayoutY());}}
     	
-    	else if(!canRight && dx < 0) {
+    	if(!canRight && dx < 0) {
     		for(Node n : allobjects) {
     			n.relocate(n.getLayoutX()-dx, n.getLayoutY());}}
 
